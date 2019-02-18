@@ -34,6 +34,7 @@
 #import "BGMDecibel.h"
 #import "BGMHermes.h"
 #import "BGMSwinsian.h"
+#import "BGMNeteaseMusic.h"
 
 
 #pragma clang assume_nonnull begin
@@ -56,6 +57,7 @@
                                          [BGMiTunes class],
                                          [BGMDecibel class],
                                          [BGMHermes class],
+                                         [BGMNeteaseMusic class],
                                          [BGMSwinsian class] ]
                          userDefaults:defaults];
 }

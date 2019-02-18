@@ -186,6 +186,7 @@
 		27FB8C2F1DE468320084DB9D /* BGM_Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27FB8C2E1DE468320084DB9D /* BGM_Utils.cpp */; settings = {COMPILER_FLAGS = "-frandom-seed=BGMApp-BGM_Utils.cpp"; }; };
 		27FB8C301DE4758A0084DB9D /* BGMPlayThrough.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C1962E51BC94E91008A4DF7 /* BGMPlayThrough.cpp */; };
 		27FB8C311DE4758A0084DB9D /* BGM_Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27FB8C2E1DE468320084DB9D /* BGM_Utils.cpp */; };
+		99B6B0E3221AACA500E2DCFA /* BGMNeteaseMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,6 +359,8 @@
 		27F7D48F1D2483B100821C4B /* BGMDecibel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGMDecibel.m; path = "Music Players/BGMDecibel.m"; sourceTree = "<group>"; };
 		27F7D4911D2484A300821C4B /* Decibel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decibel.h; path = "Music Players/Decibel.h"; sourceTree = "<group>"; };
 		27FB8C2E1DE468320084DB9D /* BGM_Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BGM_Utils.cpp; path = ../SharedSource/BGM_Utils.cpp; sourceTree = "<group>"; };
+		99B6B0E1221AACA500E2DCFA /* BGMNeteaseMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BGMNeteaseMusic.h; path = "Music Players/BGMNeteaseMusic.h"; sourceTree = "<group>"; };
+		99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BGMNeteaseMusic.m; path = "Music Players/BGMNeteaseMusic.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +516,8 @@
 				273F10DD1CC3D0B900C1C6DA /* BGMVOX.h */,
 				273F10DE1CC3D0B900C1C6DA /* BGMVOX.m */,
 				27379B841C7C53BE0084A24C /* Supporting Files */,
+				99B6B0E1221AACA500E2DCFA /* BGMNeteaseMusic.h */,
+				99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */,
 			);
 			name = "Music Players";
 			sourceTree = "<group>";
@@ -995,6 +1000,7 @@
 				1C1963011BCAC0F6008A4DF7 /* CACFString.cpp in Sources */,
 				1C1962E71BC94E91008A4DF7 /* BGMPlayThrough.cpp in Sources */,
 				1C8D8304204238DB00A838F2 /* BGMSwinsian.m in Sources */,
+				99B6B0E3221AACA500E2DCFA /* BGMNeteaseMusic.m in Sources */,
 				1C1962FA1BCAC061008A4DF7 /* CADebugMacros.cpp in Sources */,
 				27FB8C2F1DE468320084DB9D /* BGM_Utils.cpp in Sources */,
 				1C1962F31BCABFC5008A4DF7 /* CAHALAudioDevice.cpp in Sources */,
