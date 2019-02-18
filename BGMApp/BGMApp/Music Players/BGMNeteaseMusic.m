@@ -14,7 +14,7 @@
 // along with Background Music. If not, see <http://www.gnu.org/licenses/>.
 //
 
-//  BGMNeteaseCloudMusic.m
+//  BGMNeteaseMusic.m
 //  Background Music
 
 //  Copyright © 2019 Background Music contributors.
