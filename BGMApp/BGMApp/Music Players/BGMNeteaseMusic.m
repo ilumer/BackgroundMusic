@@ -44,15 +44,28 @@ static NSString *const NetseaeMusicScriptIsPlaying = \
 @"    end tell\n"
 @"end tell\n";
 
-static NSString *const NeteaseMusicScriptClickMenu = \
-@"tell application \"System Events\" to tell process \"NeteaseMusic\"\n"
-@"    tell menu bar 1\n"
-@"        tell menu bar item 4\n"
-@"            tell menu 1\n"
-@"                click menu item 1\n"
+static NSString *const NeteaseMusicScriptMenuClickTemplate = \
+@"tell application \"System Events\"\n"
+@"    set finish to false\n"
+@"    repeat with appName in {\"网易云音乐\", \"NeteaseMusic\"}\n"
+@"        if UI element appName of list 1 of application process \"Dock\" exists then\n"
+@"            tell UI element appName of list 1 of application process \"Dock\"\n"
+@"                perform action \"AXShowMenu\"\n"
+@"                tell menu 1\n"
+@"                    repeat with menuName in {%@}\n"
+@"                        if menu item menuName exists then\n"
+@"                            click menu item menuName\n"
+@"                            set finish to true\n"
+@"                            exit repeat\n"
+@"                        end if\n"
+@"                    end repeat\n"
+@"                end tell\n"
 @"            end tell\n"
-@"        end tell\n"
-@"    end tell\n"
+@"            if finish is equal to true then\n"
+@"                exit repeat\n"
+@"            end if\n"
+@"        end if\n"
+@"    end repeat\n"
 @"end tell\n";
 
 static NSString *const NeteaseMusicAppName = @"Netease Music";
@@ -60,7 +73,8 @@ static NSString *const NeteaseMusicAppBoundId = @"com.netease.163music";
 
 @implementation BGMNeteaseMusic {
     NSAppleScript* scriptIsPlaying;
-    NSAppleScript* scriptClickMenu;
+    NSAppleScript* scriptClickPlay;
+    NSAppleScript* scriptClickPause;
 }
 
 - (instancetype) init {
@@ -68,9 +82,20 @@ static NSString *const NeteaseMusicAppBoundId = @"com.netease.163music";
                                         name:NeteaseMusicAppName
                                     bundleID:NeteaseMusicAppBoundId])) {
         scriptIsPlaying = [[NSAppleScript alloc] initWithSource:NetseaeMusicScriptIsPlaying];
-        scriptClickMenu = [[NSAppleScript alloc] initWithSource:NeteaseMusicScriptClickMenu];
+        NSString* playSource = [NSString stringWithFormat:NeteaseMusicScriptMenuClickTemplate, @"\"播放\", \"Play\""];
+        NSString* pauseSource = [NSString stringWithFormat:NeteaseMusicScriptMenuClickTemplate, @"\"暂停\", \"Pause\""];
+        scriptClickPlay = [[NSAppleScript alloc] initWithSource:playSource];
+        scriptClickPause = [[NSAppleScript alloc] initWithSource:pauseSource];
+        DebugMsg("Play script: %s", [playSource UTF8String]);
+        DebugMsg("Pause script: %s", [pauseSource UTF8String]);
     }
     return self;
+}
+
+- (void) onSelect {
+    [super onSelect];
+    NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt:@YES};
+    AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
 }
 
 - (BOOL) isRunning {
@@ -92,28 +117,29 @@ static NSString *const NeteaseMusicAppBoundId = @"com.netease.163music";
 - (BOOL) isPaused {
     return ![self isPlaying];
 }
-- (BOOL) commonClickMenu:(NSString*)debugFunctionName {
+- (BOOL) commonClickMenu:(BOOL)isPlay {
     NSDictionary *error = nil;
-    NSAppleEventDescriptor *result = [self->scriptClickMenu executeAndReturnError:&error];
+    NSAppleEventDescriptor *result = [ isPlay ? self->scriptClickPlay : self->scriptClickPause executeAndReturnError:&error];
     if (result == nil) {
-        DebugMsg("BGMNeteaseMusic::%s run apple scripe error: %s", debugFunctionName.UTF8String, [[NSString stringWithFormat:@"%@", error] UTF8String]);
-
-        // workaround for "Unused Parameter" Warning in Release mode
-        (void)debugFunctionName;
+        DebugMsg(
+                 "BGMNeteaseMusic::%s run apple scripe error: %s",
+                 isPlay ? "unpause" : "pause",
+                 [[NSString stringWithFormat:@"%@", error] UTF8String]
+        );
     }
     return result != nil;
 }
 
 - (BOOL) pause {
     if ([self isPlaying]) {
-        return [self commonClickMenu:@"pause"];
+        return [self commonClickMenu:false];
     }
     return false;
 }
 
 - (BOOL) unpause {
     if ([self isPaused]) {
-        return [self commonClickMenu:@"unpause"];
+        return [self commonClickMenu:true];
     }
     return false;
 }
