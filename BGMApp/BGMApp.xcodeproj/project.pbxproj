@@ -187,6 +187,7 @@
 		27FB8C301DE4758A0084DB9D /* BGMPlayThrough.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C1962E51BC94E91008A4DF7 /* BGMPlayThrough.cpp */; };
 		27FB8C311DE4758A0084DB9D /* BGM_Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27FB8C2E1DE468320084DB9D /* BGM_Utils.cpp */; };
 		99B6B0E3221AACA500E2DCFA /* BGMNeteaseMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */; };
+		B9559CCE3BE633B701BD5141 /* BGMQQMusic.m in Sources */ = {isa = PBXBuildFile; fileRef = B95594B82F421DD713AC59CE /* BGMQQMusic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,8 @@
 		27FB8C2E1DE468320084DB9D /* BGM_Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BGM_Utils.cpp; path = ../SharedSource/BGM_Utils.cpp; sourceTree = "<group>"; };
 		99B6B0E1221AACA500E2DCFA /* BGMNeteaseMusic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BGMNeteaseMusic.h; path = "Music Players/BGMNeteaseMusic.h"; sourceTree = "<group>"; };
 		99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BGMNeteaseMusic.m; path = "Music Players/BGMNeteaseMusic.m"; sourceTree = "<group>"; };
+		B95594B82F421DD713AC59CE /* BGMQQMusic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGMQQMusic.m; sourceTree = "<group>"; };
+		B95599C976336AA80516604E /* BGMQQMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMQQMusic.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +521,8 @@
 				27379B841C7C53BE0084A24C /* Supporting Files */,
 				99B6B0E1221AACA500E2DCFA /* BGMNeteaseMusic.h */,
 				99B6B0E2221AACA500E2DCFA /* BGMNeteaseMusic.m */,
+				B95599C976336AA80516604E /* BGMQQMusic.h */,
+				B95594B82F421DD713AC59CE /* BGMQQMusic.m */,
 			);
 			name = "Music Players";
 			sourceTree = "<group>";
@@ -1010,6 +1015,7 @@
 				2795973B1C982E4E00A002FB /* BGMXPCListener.mm in Sources */,
 				27C457E61CF2BC2600A6C9A6 /* BGMAutoPauseMenuItem.m in Sources */,
 				1C1465B81BCC3A73003AEFE6 /* BGMAutoPauseMusic.mm in Sources */,
+				B9559CCE3BE633B701BD5141 /* BGMQQMusic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
